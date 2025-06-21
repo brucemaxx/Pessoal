@@ -21,3 +21,22 @@ Nos próximos meses, meu objetivo é conseguir minha primeira oportunidade como 
 
 Embora esteja no início da minha carreira, acredito que minha dedicação e esforço para aprender continuamente são meus maiores diferenciais. Estou disposto a enfrentar desafios e, com a oportunidade certa, acredito que minha capacidade de aprender e crescer pode agregar muito à empresa.
 
+[![card](https://github-readme-stats.vercel.app/api?username=brucemaxx&theme=tokyonight&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
+
+
+##
+## Tecnologias do meu dia a dia
+
+<div style="display: inline_block"><br/>
+    <img alt="center" alt="python" src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white"/>
+    <img alt="center" alt="htlm5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+    "/>
+    <img alt="center" alt="css3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+    "/>
+    <img alt="center" alt="javascript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+    <img alt="center" alt="django" src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white
+    "/>
+    <img alt="center" alt="react" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+    "/>
+
+</div>
