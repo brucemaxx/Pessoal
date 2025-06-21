@@ -1,0 +1,27 @@
+###======= ROTEIRO ======###
+
+1 - Criar um repositório com o mesmo nome do dono
+	Ex.: brucemaxx(dono) - (repositorio) brucemaxx ele vai abrir com opção especial para exibir no perfil
+
+2 - Criar esse repositório com README para ser editado corretamente
+
+3 - Editar o README, abaixo vou deixar links para que isso seja mais otmizado
+
+==> para as badges shields| https://github.com/iuricode/readme-template
+
+4 - Modelo do script das badges
+	[![nome da bagde-shield](link da badge-shield do GitHub acima)] (contato/número de celular)
+
+5 - Edite um texto que seja interessante
+	https://readme.so/pt
+
+6 - Para as tecnologias/Skills
+	
+	
+	<div style="display: inline_block"><br/>
+	   <img align="" alt="" src=""/>
+	</div>
+
+	align | posição
+	alt | descrição
+	src | o caminho https
