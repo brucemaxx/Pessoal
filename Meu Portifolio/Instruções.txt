@@ -1,0 +1,54 @@
+COMO QUERO ESSE MEU PORTIFÓLIO 
+
+Ele deve seguir exatamente esses requisitos:
+ em html, css e JavaScript ( ou se for a melhor opção para o mercado usar Tailwind)
+
+Frontend dever ser baseado nas imagens que irei fornecer mais a frente.
+a estutura deve seguir: Principal, Projetos, Habilidades e Skills, Sobre mim e contatos.
+
+PRINCIPAL:
+	Deve ser como o exemplo com a o destaque de desenvolvedor fullstack
+	aqui quero que crie a opção de tornar todas as paginas para o ingles como um botão para isso e
+	um botão para o portugues do brasil também ( a idéia é dar opção para quem esta visitando)
+
+	quero que a palavra "desenvolvedor fullstack" tenha uma animação do tipo glitch periodicamente.
+	deixe o código preparado para receber a imagem que será o background da página.
+	
+	claro as páginas dever ser conectadas e interativas.
+
+PROJETOS:
+	- Aqui quero que seja como na página de exemplo.
+	- quero preparar cards interativos dos meus projeto que futuramente farei, por isso tudo deve ficar pronto para recebe-los
+	esses cards quero que tenham a seguinte interação ao passar o mouse que fique em detaque (como na netflix) 
+	e que ao clicar escureça o conteúdo da página atras e deixe as informações do card disponivel para ler e rolar continuar as informações.
+	- também quero que as tecnologias usadas no projeto possam ser adicionadas.
+	- minha ideia é ter ao menos 12 projetos por isso preciso do código bem escrito (inicialmente tenho 3 projetos e quero destacá-los), mais tarde adcionarei os demais conforme for concluido eles.
+ 
+
+HABILIDADES E SKILLS:
+	- seguir de acordo com o modelo de exemplo da imagem.
+	- use a cor de background da imagem nessa parte
+	- quero que crie cards como os do modelo use as mesmas cores
+	- Deixe perparado para usar imagens nos icones do topo de cada card.
+	- quero que ao passar o mouse sobre cada card abra um informativo com a descrição do que é o tema do card.
+	- use as cores para background iguais da imagem.
+
+
+SOBRE MIM:
+	- seguir de acordo com o modelo de exemplo da imagem.
+	- use as cores dos card dos projetos aqui no background
+	- seguira como no exemplo, quero colocar minha foto.
+	- Quero nesse trecho falar de mim.
+	- Quero que as palavras referentes as tecnologias que eu usar fique destacada e que ao passar o mouse um resumo sobre o que ela é apareça enquanto o mouse estiver sobre.
+	(vou fornecer o resumo).
+	- Também quero deixar um botão com opção para baixar meu currículo caso a pessoa se interesse.
+
+CONTATOS:	
+	- seguir de acordo com o modelo de exemplo da imagem.
+	- cópie a mensagem de agradecimento do modelo.
+	- Os icones das redes devem ser badge (linkedin, GitHub, Email, Whatsapp)
+	
+
+Quanto as cores de todo o projeto ela deve seguir o que esta no exemplo disponível por imagns.
+
+

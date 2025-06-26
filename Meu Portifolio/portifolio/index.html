@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bruce | Desenvolvedor Fullstack</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .neon {
+      color: #f5f7f7;
+      text-shadow:
+        0 0 8px #38f9ff,
+        0 0 16px #38f9ff,
+        0 0 32px #38f9ff;
+    }
+    .img-soft-skill {
+      filter: brightness(0) invert(1);
+    }
+    .img-hard-skill {
+      filter: brightness(0) invert(1);
+    }
+    .tooltip-tech {
+      position: absolute;
+      left: 50%;
+      bottom: 120%;
+      transform: translateX(-50%);
+      background: #111827;
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      z-index: 30;
+      box-shadow: 0 4px 24px #0008;
+    }/*
+    .filter.invert {
+      filter: brightness(0) invert(1);
+    }*/
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(-10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .animate-fade-in { animation: fade-in 0.2s;}
+
+    /* Adicione ao seu <style> */
+    .navbar-hide {
+      transform: translateY(-120%);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .navbar-show {
+      transform: translateY(0);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white" style="background-image: url('sua-imagem.jpg'); background-size: cover; background-position: center;">
+  <!-- NAVBAR -->
+  <header id="main-navbar" class="flex flex-col items-center w-full fixed z-50 bg-transparent pt-6 navbar-show">
+    <nav class="flex justify-center space-x-8 bg-white rounded-full px-8 py-2 shadow-lg">
+      <a href="#principal" class="font-bold text-black px-4 py-1 rounded-full bg-white shadow transition">PRINCIPAL</a>
+      <a href="#projetos" class="text-black px-4 py-1 rounded-full hover:bg-gray-100 transition">PROJETOS</a>
+      <a href="#habilidades" class="text-black px-4 py-1 rounded-full hover:bg-gray-100 transition">MAIS</a>
+    </nav>
+  </header>
+
+  <!-- MENU COLAPSÁVEL FIXO -->
+  <nav class="fixed top-6 right-8 z-50">
+    <!-- Botão hambúrguer -->
+    <button id="menu-btn" class="flex flex-col justify-center items-center w-12 h-12 bg-white/80 rounded-full shadow-lg hover:bg-white transition focus:outline-none">
+      <span class="block w-7 h-1 bg-[#1a093b] rounded mb-1"></span>
+      <span class="block w-7 h-1 bg-[#1a093b] rounded mb-1"></span>
+      <span class="block w-7 h-1 bg-[#1a093b] rounded"></span>
+    </button>
+    <!-- Menu colapsável -->
+    <div id="menu-content" class="hidden absolute right-0 mt-4 w-56 bg-[#1a093b] rounded-2xl shadow-2xl py-6 px-4 flex flex-col gap-4 animate-fade-in">
+      <a href="#principal" class="text-white font-bold px-4 py-2 rounded hover:bg-[#2d184a] transition">Principal</a>
+      <a href="#projetos" class="text-white px-4 py-2 rounded hover:bg-[#2d184a] transition">Projetos</a>
+      <a href="#habilidades" class="text-white px-4 py-2 rounded hover:bg-[#2d184a] transition">Habilidades</a>
+      <a href="#hard-skills" class="text-white px-4 py-2 rounded hover:bg-[#2d184a] transition">Hard Skills</a>
+      <a href="#sobre" class="text-white px-4 py-2 rounded hover:bg-[#2d184a] transition">Sobre Mim</a>
+      <a href="#contatos" class="text-white px-4 py-2 rounded hover:bg-[#2d184a] transition">Contatos</a>
+    </div>
+  </nav>
+
+  <!-- PRINCIPAL -->
+  <section id="principal"
+  class="relative min-h-screen flex flex-col justify-center items-center text-center px-4"
+  style="background-image: url('meu-modelo-para-portifólio.png'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative z-10 flex flex-col items-center mt-32">
+      <span class="font-bold text-black bg-white px-8 py-3 rounded-full text-2xl mb-6 shadow-lg">Sou Bruce</span>
+      <h1 class="text-6xl md:text-8xl font-extrabold neon mb-8">Desenvolvedor<br>Fullstack</h1>
+      <p class="bg-white text-black px-8 py-4 rounded-full text-2xl font-semibold shadow-lg">Crio soluções eficientes e inteligentes para o seu negócio</p>
+      <a href="#projetos" class="mt-8 px-8 py-3 bg-blue-700 text-white font-bold rounded-full hover:bg-blue-900 transition">Ver Projetos</a>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos" class="py-24 bg-transparent text-white" style="background: linear-gradient(90deg, #1a093b 0%, #2d184a 100%); border-radius: 24px;">
+    <h2 class="text-center text-5xl font-bold mb-16 neon">Projetos</h2>
+    <div id="cards-container" class="flex flex-wrap justify-center gap-10 px-4">
+      <!-- Card Projeto 1 -->
+      <div class="project-card group relative bg-gradient-to-b from-purple-700 to-black rounded-2xl shadow-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 w-80"
+           onclick="openModal(0)">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" alt="Projeto Hardware" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold mb-2">Hardware</h3>
+          <p class="text-gray-200 mb-4">CPU, RAM, Storage, I/O devices</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-purple-500 text-xs px-2 py-1 rounded">C</span>
+            <span class="bg-purple-500 text-xs px-2 py-1 rounded">Assembly</span>
+          </div>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition"></div>
+      </div>
+      <!-- Card Projeto 2 -->
+      <div class="project-card group relative bg-gradient-to-b from-purple-700 to-black rounded-2xl shadow-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 w-80"
+           onclick="openModal(1)">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Projeto Software" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold mb-2">Software</h3>
+          <p class="text-gray-200 mb-4">Operating system, applications</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-purple-500 text-xs px-2 py-1 rounded">Python</span>
+            <span class="bg-purple-500 text-xs px-2 py-1 rounded">FastAPI</span>
+          </div>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition"></div>
+      </div>
+      <!-- Card Projeto 3 -->
+      <div class="project-card group relative bg-gradient-to-b from-purple-700 to-black rounded-2xl shadow-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 w-80"
+           onclick="openModal(2)">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Projeto Firmware" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-2xl font-bold mb-2">Firmware</h3>
+          <p class="text-gray-200 mb-4">Embedded system software</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-purple-500 text-xs px-2 py-1 rounded">C++</span>
+            <span class="bg-purple-500 text-xs px-2 py-1 rounded">MicroPython</span>
+          </div>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition"></div>
+      </div>
+      <!-- Cards vazios para futuros projetos -->
+      <template id="project-card-template">
+        <div class="project-card group relative bg-gradient-to-b from-purple-700 to-black rounded-2xl shadow-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 w-80"
+             onclick="">
+          <img src="" alt="Projeto" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-bold mb-2"></h3>
+            <p class="text-gray-200 mb-4"></p>
+            <div class="flex flex-wrap gap-2"></div>
+          </div>
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition"></div>
+        </div>
+      </template>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-bg" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden flex items-center justify-center">
+      <div id="modal-content" class="bg-white text-black rounded-2xl shadow-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto p-8 relative">
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-2xl font-bold text-gray-700 hover:text-red-600">&times;</button>
+        <img id="modal-img" src="" alt="" class="w-full h-56 object-cover rounded-xl mb-4">
+        <h3 id="modal-title" class="text-3xl font-bold mb-2"></h3>
+        <p id="modal-desc" class="mb-4"></p>
+        <div id="modal-techs" class="flex flex-wrap gap-2 mb-2"></div>
+        <div id="modal-extra" class="text-gray-700 text-sm"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES E SKILLS -->
+  <section id="habilidades" 
+  class="py-16 relative"
+  style="background-image: url('soft-skills.webp'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative z-10">
+      <h2 class="text-center text-4xl font-bold mb-2 text-white">Habilidades Interpessoais</h2>
+      <h3 class="text-center text-5xl font-light mb-12 text-white/90 neon">Soft Skills</h3>
+      <div class="flex flex-wrap justify-center gap-8 px-4">
+        <!-- Card 1 -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-6 rounded-2xl w-56 text-center flex flex-col items-center shadow-lg cursor-pointer">
+          <!-- Ícone/Imagem -->
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-soft\11127455.png" alt="Pensamento Crítico" class="w-16 h-16 mb-4 img-soft-skill" />
+          <span class="font-bold text-lg text-white">Pensamento Crítico</span>
+          <!-- Tooltip -->
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Capacidade de analisar situações e tomar decisões fundamentadas.
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-6 rounded-2xl w-56 text-center flex flex-col items-center shadow-lg cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-soft\15556019.png" alt="Comunicação Eficaz" class="w-16 h-16 mb-4 img-soft-skill" />
+          <span class="font-bold text-lg text-white">Comunicação Eficaz</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Expressar ideias com clareza e ouvir ativamente os outros.
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-6 rounded-2xl w-56 text-center flex flex-col items-center shadow-lg cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-soft\9159168.png" alt="Trabalho em Equipe" class="w-16 h-16 mb-4 img-soft-skill" />
+          <span class="font-bold text-lg text-white">Trabalho em Equipe</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Colaborar com outras pessoas para alcançar objetivos comuns.
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-6 rounded-2xl w-56 text-center flex flex-col items-center shadow-lg cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-soft\8510127.png" alt="Proatividade" class="w-16 h-16 mb-4 img-soft-skill" />
+          <span class="font-bold text-lg text-white">Proatividade</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Antecipar problemas e agir antes que aconteçam.
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-6 rounded-2xl w-56 text-center flex flex-col items-center shadow-lg cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-soft\time.png" alt="Organização e Gerenciamento de Tempo" class="w-16 h-16 mb-4 img-soft-skill" />
+          <span class="font-bold text-lg text-white">Organização e<br>Gerenciamento de Tempo</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Planejar tarefas e administrar o tempo de forma eficiente.
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-6 rounded-2xl w-56 text-center flex flex-col items-center shadow-lg cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-soft\11091956.png" alt="Resiliência" class="w-16 h-16 mb-4 img-soft-skill" />
+          <span class="font-bold text-lg text-white">Resiliência</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Capacidade de se adaptar e superar desafios e adversidades.
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-lg mt-12 text-white/80">
+        São competências relacionadas à forma como nos comunicamos, colaboramos e nos relacionamos com outras pessoas.
+      </p>
+    </div>
+  </section>
+
+  <!-- HARD SKILLS -->
+  <section id="hard-skills" class="py-16 relative"
+  style="background-image: url('hard-skills.jpg'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+    <div class="relative z-10">
+      <h2 class="text-center text-4xl font-bold mb-2 text-white">Habilidades Técnicas</h2>
+      <h3 class="text-center text-5xl font-light mb-12 text-white/90 neon">Hard Skills</h3>
+      <div class="flex flex-wrap justify-center gap-8 px-4">
+        <!-- Card GitHub -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-8 rounded-3xl w-56 text-center flex flex-col items-center shadow-2xl cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-hard\github_PNG40.png" alt="GitHub" class="w-16 h-16 mb-4 img-hard-skill" />
+          <span class="font-bold text-lg text-white">GitHub</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Plataforma para hospedagem e versionamento de código.
+          </div>
+        </div>
+        <!-- Card Python -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-8 rounded-3xl w-56 text-center flex flex-col items-center shadow-2xl cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-hard\python-logo.png" alt="Python" class="w-16 h-16 mb-4 img-hard-skill" />
+          <span class="font-bold text-lg text-white">Python</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Linguagem de programação versátil e poderosa.
+          </div>
+        </div>
+        <!-- Card SQL -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-8 rounded-3xl w-56 text-center flex flex-col items-center shadow-2xl cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-hard\sql-png-3.png" alt="SQL" class="w-16 h-16 mb-4 img-hard-skill" />
+          <span class="font-bold text-lg text-white">SQL</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Linguagem para manipulação de bancos de dados relacionais.
+          </div>
+        </div>
+        <!-- Card NoSQL -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-8 rounded-3xl w-56 text-center flex flex-col items-center shadow-2xl cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-hard\nosql databases.png" alt="NoSQL" class="w-16 h-16 mb-4 img-hard-skill" />
+          <span class="font-bold text-lg text-white">NoSQL</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Bancos de dados não relacionais para dados flexíveis e escaláveis.
+          </div>
+        </div>
+        <!-- Card FastAPI -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-8 rounded-3xl w-56 text-center flex flex-col items-center shadow-2xl cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-hard\fastapi-icon.png" alt="FastAPI" class="w-16 h-16 mb-4 img-hard-skill" />
+          <span class="font-bold text-lg text-white">FastAPI</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Framework moderno para APIs rápidas com Python.
+          </div>
+        </div>
+        <!-- Card Machine Learning -->
+        <div class="relative group bg-[#1a093b] hover:bg-[#2d184a] transition-colors p-8 rounded-3xl w-56 text-center flex flex-col items-center shadow-2xl cursor-pointer">
+          <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\icones-hard\learning.png" alt="Machine Learning" class="w-16 h-16 mb-4 img-hard-skill" />
+          <span class="font-bold text-lg text-white">Machine Learning</span>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 bg-black bg-opacity-90 text-white text-sm rounded-lg px-4 py-2 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-20">
+            Área da IA focada em sistemas que aprendem com dados.
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-lg mt-12 text-white/80">
+        Adquirida por meio de estudo, treinamento ou experiência prática. Elas são geralmente mensuráveis e fáceis de comprovar.
+      </p>
+    </div>
+  </section>
+
+  <!-- SOBRE MIM -->
+  <section id="sobre" class="py-16 flex flex-col md:flex-row items-center px-8"
+  style="background: linear-gradient(90deg, #1a093b 0%, #2d184a 100%); border-radius: 24px;">
+    <!-- Foto -->
+    <img src="C:\Users\Windows\OneDrive\Documentos\Pessoal\Meu Portifolio\imagens\perfil.png" alt="Foto Bruce" class="w-64 h-64 rounded-full mb-8 md:mb-0 md:mr-12 object-cover border-4 border-white shadow-2xl" />
+    <!-- Texto -->
+    <div class="flex-1 bg-black bg-opacity-40 rounded-3xl p-10 shadow-2xl text-white max-w-2xl">
+      <h2 class="text-5xl font-bold neon mb-6">Sobre Mim</h2>
+      <p class="text-lg mb-4 sobre-texto1">
+        Olá! Sou Bruce, apaixonado por tecnologia e desenvolvimento de soluções inovadoras. Tenho experiência sólida em 
+        <span class="font-bold underline cursor-help relative group">
+          Python
+          <span class="tooltip-tech group-hover:opacity-100">
+            Linguagem de programação versátil e poderosa.
+          </span>
+        </span>, 
+        <span class="font-bold underline cursor-help relative group">
+          FastAPI
+          <span class="tooltip-tech group-hover:opacity-100">
+            Framework moderno para APIs rápidas com Python.
+          </span>
+        </span> e 
+        <span class="font-bold underline cursor-help relative group">
+          Machine Learning
+          <span class="tooltip-tech group-hover:opacity-100">
+            Área da IA focada em sistemas que aprendem com dados.
+          </span>
+        </span>.
+      </p>
+      <p class="text-lg mb-4 sobre-texto2">
+        Sou movido por desafios e acredito que a tecnologia pode transformar realidades. Gosto de trabalhar em equipe, compartilhar conhecimento e buscar sempre as melhores práticas de desenvolvimento.
+      </p>
+      <a href="curriculo.pdf" download class="inline-block mt-4 px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition shadow-lg">
+        Baixar Currículo
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTATOS -->
+  <footer class="min-h-screen flex flex-col justify-center items-center text-center relative" style="background: linear-gradient(90deg, #1a093b 0%, #2d184a 100%);">
+    <div class="absolute inset-0" style="background: url('meu-modelo-para-portifólio.png'); background-size: cover; background-position: center; opacity: 0.25;"></div>
+    <div class="relative z-10 flex flex-col items-center w-full">
+      <span class="text-white text-lg font-semibold mb-4 mt-8 tracking-widest"></span>
+      <h2 class="text-6xl md:text-7xl font-extrabold text-white mb-8 neon" style="line-height: 1.1;">
+        Obrigado por visitar<br>meu portifólio
+      </h2>
+      <span class="text-cyan-300 text-2xl font-bold mb-6 block">Contatos</span>
+      <div class="flex justify-center gap-8 mb-8">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/seuusuario" target="_blank" title="LinkedIn"
+           class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-white/10 hover:bg-blue-600 transition shadow-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="w-7 h-7 filter invert" />
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/seuusuario" target="_blank" title="GitHub"
+           class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-white/10 hover:bg-purple-700 transition shadow-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-7 h-7 filter invert" />
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5599999999999" target="_blank" title="WhatsApp"
+           class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-white/10 hover:bg-green-500 transition shadow-lg">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" class="w-7 h-7 filter invert" />
+        </a>
+        <!-- Email -->
+        <a href="mailto:seu@email.com" title="E-mail"
+           class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-white/10 hover:bg-red-500 transition shadow-lg">
+          <svg class="w-7 h-7" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+          <rect width="20" height="14" x="2" y="5" rx="2" fill="white"/>
+          <path d="M22 7.5l-10 7-10-7" stroke="#1a093b" stroke-width="2" fill="none"/>
+        </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Modal
+    function openModal(idx) {
+      const p = projetos[idx];
+      document.getElementById('modal-img').src = p.img;
+      document.getElementById('modal-title').innerText = p.title;
+      document.getElementById('modal-desc').innerText = p.desc;
+      document.getElementById('modal-techs').innerHTML = p.techs.map(t => `<span class="bg-purple-500 text-white text-xs px-2 py-1 rounded">${t}</span>`).join(' ');
+      document.getElementById('modal-extra').innerText = p.extra;
+      document.getElementById('modal-bg').classList.remove('hidden');
+    }
+    function closeModal() {
+      document.getElementById('modal-bg').classList.add('hidden');
+    }
+
+    // Menu colapsável
+    const menuBtn = document.getElementById('menu-btn');
+    const menuContent = document.getElementById('menu-content');
+    menuBtn.onclick = () => {
+      menuContent.classList.toggle('hidden');
+    };
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', function(e) {
+      if (!menuBtn.contains(e.target) && !menuContent.contains(e.target)) {
+        menuContent.classList.add('hidden');
+      }
+    });
+
+    // Dados dos projetos (adicione mais conforme necessário)
+    const projetos = [
+      {
+        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80",
+        title: "Hardware",
+        desc: "CPU, RAM, Storage, I/O devices",
+        techs: ["C", "Assembly"],
+        extra: "Projeto de hardware para sistemas embarcados, com foco em desempenho e eficiência."
+      },
+      {
+        img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80",
+        title: "Software",
+        desc: "Operating system, applications",
+        techs: ["Python", "FastAPI"],
+        extra: "Aplicações web modernas, APIs REST e integrações com bancos de dados."
+      },
+      {
+        img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+        title: "Firmware",
+        desc: "Embedded system software",
+        techs: ["C++", "MicroPython"],
+        extra: "Desenvolvimento de firmware para microcontroladores e IoT."
+      }
+      // Adicione até 12 projetos aqui!
+    ];
+
+    let lastScroll = 0;
+    const navbar = document.getElementById('main-navbar');
+
+    window.addEventListener('scroll', function() {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > lastScroll && currentScroll > 80) {
+        // Rolando para baixo, esconde
+        navbar.classList.remove('navbar-show');
+        navbar.classList.add('navbar-hide');
+      } else {
+        // Rolando para cima, mostra
+        navbar.classList.remove('navbar-hide');
+        navbar.classList.add('navbar-show');
+      }
+      lastScroll = currentScroll;
+    });
+  </script>
+</body>
+</html>
